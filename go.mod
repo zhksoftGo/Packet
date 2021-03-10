@@ -1,3 +1,3 @@
-module github.com/zhksoftGo/Packet
+module github.com/ZhkSoftGo/Packet
 
 go 1.15
