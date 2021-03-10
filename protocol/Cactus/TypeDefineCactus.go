@@ -5,7 +5,7 @@
 package Cactus
 
 //打包解包类
-import "github.com/zhksoftGo"
+import "github.com/zhksoftGo/Packet"
 
 //整数数组
 type vectorInt []int32

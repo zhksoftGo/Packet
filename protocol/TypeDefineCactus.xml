@@ -13,7 +13,7 @@
 		<File Language="java" Name="TypeDefineCactus" Type="Package" Notes="TypeDefineCactus包"/>
 		<File Language="flash" Name="flash.utils.ByteArray" Type="single" Notes="字节数组"/>
 		<File Language="flash" Name="flash.utils.Endian" Type="single" Notes="字节序"/>
-		<File Language="go" Name="github.com/zhksoftGo" Type="System" Notes="打包解包类"/>
+		<File Language="go" Name="github.com/zhksoftGo/Packet" Type="System" Notes="打包解包类"/>
 	</Dependences>
 	<Vector Name="vectorInt" Element="int" Notes="整数数组"/>
 	<Vector Name="vectorShort" Element="int16" Notes="Short数组"/>
