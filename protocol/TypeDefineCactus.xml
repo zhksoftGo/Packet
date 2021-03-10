@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProtocolTypeDefine NameSpace="Cactus" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Dependences Name="NoUse" Notes="依赖的头文件">
+		<File Language="cpp" Name="CommonUtil/Packet" Type="System" Notes="打包解包类"/>
+		<File Language="cpp" Name="CommonUtil/TimeSource" Type="System" Notes="_timeGetTime函数需求"/>
+		<File Language="cpp" Name="CommonUtil/TGXML" Type="System" Notes="XML序列化输入需求"/>
+		<File Language="cpp" Name="CommonUtil/json_value" Type="System" Notes="json序列化需求"/>
+		<File Language="csharp" Name="System" Type="System" Notes="系统包"/>
+		<File Language="csharp" Name="System.Threading" Type="System" Notes="线程"/>
+		<File Language="csharp" Name="System.Collections.Generic" Type="System" Notes="泛型的集合类"/>
+		<File Language="java" Name="Cactus" Type="Package" Notes="Cactus包"/>
+		<File Language="java" Name="TypeDefine" Type="Package" Notes="BCType包"/>
+		<File Language="java" Name="TypeDefineCactus" Type="Package" Notes="TypeDefineCactus包"/>
+		<File Language="flash" Name="flash.utils.ByteArray" Type="single" Notes="字节数组"/>
+		<File Language="flash" Name="flash.utils.Endian" Type="single" Notes="字节序"/>
+		<File Language="go" Name="github.com/zhksoftGo" Type="System" Notes="打包解包类"/>
+	</Dependences>
+	<Vector Name="vectorInt" Element="int" Notes="整数数组"/>
+	<Vector Name="vectorShort" Element="int16" Notes="Short数组"/>
+	<Vector Name="vectorInt64" Element="int64" Notes="int 64数组"/>
+	<Vector Name="vectorUint64" Element="uint64" Notes="unsigned int 64数组"/>
+	<Vector Name="vectorString" Element="String" Notes="Cactus::String数组"/>
+	<Vector Name="vectorFloat" Element="float" Notes="浮点数组"/>
+	<Map Name="mapIntInt" Key="int" Value="int" Notes="int-int map"/>
+	<Map Name="mapIntBool" Key="int" Value="bool" Notes="int-bool map"/>
+	<Map Name="mapStringString" Key="String" Value="String" Notes="String-String map"/>
+	<Struct Name="SMsgRecordItem" Notes="单条消息记录">
+		<Member Type="int64" Name="time" Notes="发生时间"/>
+		<Member Type="Packet" Name="msg" Notes="去掉消息头(长度+类型)的消息数据"/>
+	</Struct>
+	<Vector Name="vectorMsgRecord" Element="Cactus::SMsgRecordItem" Notes="消息记录数组"/>
+</ProtocolTypeDefine>

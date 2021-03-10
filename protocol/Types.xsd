@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:simpleType name="TypeRange">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="int"/>
+			<xs:enumeration value="float"/>
+			<xs:enumeration value="double"/>
+			<xs:enumeration value="bool"/>
+			<xs:enumeration value="int8"/>
+			<xs:enumeration value="uint8"/>
+			<xs:enumeration value="int16"/>
+			<xs:enumeration value="uint16"/>
+			<xs:enumeration value="uint"/>
+			<xs:enumeration value="int64"/>
+			<xs:enumeration value="uint64"/>
+			<xs:enumeration value="Packet"/>
+			<xs:enumeration value="String"/>
+			<xs:enumeration value="Vector3"/>
+			<xs:enumeration value="Vector2"/>
+			<xs:enumeration value="Cactus::vectorInt"/>
+			<xs:enumeration value="Cactus::vectorShort"/>
+			<xs:enumeration value="Cactus::vectorUint64"/>
+			<xs:enumeration value="Cactus::vectorString"/>
+			<xs:enumeration value="Cactus::mapIntInt"/>
+			<xs:enumeration value="Cactus::mapStringString"/>
+			<xs:enumeration value="Cactus::SMsgRecordItem"/>
+			<xs:enumeration value="Cactus::vectorMsgRecord"/>
+			<xs:enumeration value="ProtocolMonitoring::EMornitoringOperationType"/>
+			<xs:enumeration value="ProtocolMonitoring::SOperationHistory"/>
+			<xs:enumeration value="ProtocolMonitoring::vectorOperationHistory"/>
+			<xs:enumeration value="ProtocolMonitoring::SNodeInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::mapNodeInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::SAppClassItemInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::mapDependences"/>
+			<xs:enumeration value="ProtocolMonitoring::mapAppClassItem"/>
+			<xs:enumeration value="ProtocolMonitoring::SMonitoringServerInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::SDynamicServiceInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::mapMonitoringServerInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::SAppGroupInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::vectorDynamicServiceInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::SDynamicNodeInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::vectorDynamicNodeInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::SAppClassInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::mapAppClassInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::SAppGroupInfo"/>
+			<xs:enumeration value="ProtocolMonitoring::mapAppGroups"/>
+			<xs:enumeration value="ProtocolMonitoring::SAppClassNodeVersion"/>
+			<xs:enumeration value="ProtocolMonitoring::mapAppClassNodeVersion"/>
+			<xs:enumeration value="ProtocolMonitoring::vectorAppClassNodeVersion"/>
+			<xs:enumeration value="ProtocolMonitoring::SLogItem"/>
+			<xs:enumeration value="ProtocolMonitoring::vectorLogItems"/>
+			<xs:enumeration value="ProtocolMonitoring::SMonitoringSettings"/>
+			<xs:enumeration value="ProtocolTestMultiMsg::DBFriendInfo"/>
+			<xs:enumeration value="BCType::EServerType"/>
+			<xs:enumeration value="BCType::SServerStatus"/>
+			<xs:enumeration value="BCType::SServerInfo"/>
+			<xs:enumeration value="BCType::SServerListenInfo"/>
+			<xs:enumeration value="BCType::mapServerListenInfos"/>
+			<xs:enumeration value="BCType::vectorServerInfos"/>
+			<xs:enumeration value="BCType::EServerErrorType"/>
+			<xs:enumeration value="BCType::SAccountInfo"/>
+			<xs:enumeration value="BCType::mapDBFriendInfos"/>
+			<xs:enumeration value="BCType::SCharacterInfoBasic"/>
+			<xs:enumeration value="BCType::SCharacterLeaderboardInfo"/>
+			<xs:enumeration value="BCType::SCharacterInfoLogin"/>
+			<xs:enumeration value="BCType::vectorCharacterInfoLogins"/>
+			<xs:enumeration value="BCType::vectorCharSimpleData"/>
+			<xs:enumeration value="BCType::SPlayerSimpleEquipment"/>
+			<xs:enumeration value="BCType::vectorPlayerSimpleEquipment"/>
+			<xs:enumeration value="BCType::SCharacterInfoDurability"/>
+			<xs:enumeration value="BCType::SFriendInfo"/>
+			<xs:enumeration value="BCType::vectorFriendInfos"/>
+			<xs:enumeration value="BCType::mapFriendInfos"/>
+			<xs:enumeration value="BCType::SRelationInfo"/>
+			<xs:enumeration value="BCType::SAccountFriendInfo"/>
+			<xs:enumeration value="BCType::mapAccountFriendInfos"/>
+			<xs:enumeration value="BCType::EEquipmentPart"/>
+			<xs:enumeration value="BCType::SAccountCreationData"/>
+			<xs:enumeration value="BCType::SCharacterCreationData"/>
+			<xs:enumeration value="BCType::SCharacterSimpleData"/>
+			<xs:enumeration value="BCType::SBagItem"/>
+			<xs:enumeration value="BCType::SItemPrototype"/>
+			<xs:enumeration value="BCType::ItemGuid"/>
+			<xs:enumeration value="BCType::SItemInfo"/>
+			<xs:enumeration value="BCType::vectorItemInfos"/>
+			<xs:enumeration value="BCType::SCharacterItemInfo"/>
+			<xs:enumeration value="BCType::vectorCharacterItemInfos"/>
+			<xs:enumeration value="BCType::SItemAttributeInfo"/>
+			<xs:enumeration value="BCType::vectorSItemAttributeInfos"/>
+			<xs:enumeration value="BCType::SBagInfo"/>
+			<xs:enumeration value="BCType::vectorBagInfos"/>
+			<xs:enumeration value="BCType::SBagGroup"/>
+			<xs:enumeration value="BCType::SCharacterDataGroup"/>
+			<xs:enumeration value="BCType::SChannelInfo"/>
+			<xs:enumeration value="BCType::vectorChannelServerInfos"/>
+			<xs:enumeration value="BCType::vectorChannelInfos"/>
+			<xs:enumeration value="BCType::GameServerInfo"/>
+			<xs:enumeration value="BCType::mapGameServerInfos"/>
+			<xs:enumeration value="BCType::UserJoinGameInfo"/>
+			<xs:enumeration value="BCType::SChannelPlayerInfo"/>
+			<xs:enumeration value="BCType::vectorChannelPlayerInfo"/>
+			<xs:enumeration value="BCType::EChatType"/>
+			<xs:enumeration value="BCType::DBItemInfo"/>
+			<xs:enumeration value="BCType::SMoneyInfo"/>
+			<xs:enumeration value="BCType::SCharacterAttributeInfo"/>
+			<xs:enumeration value="BCType::vectorSCharacterAttributeInfos"/>
+			<xs:enumeration value="BCType::SRoomCharacterInfo"/>
+			<xs:enumeration value="BCType::EMailType"/>
+			<xs:enumeration value="BCType::EMailState"/>
+			<xs:enumeration value="BCType::SMailInfo"/>
+			<xs:enumeration value="BCType::EMailReason"/>
+			<xs:enumeration value="BCType::mapMailInfo"/>
+			<xs:enumeration value="BCType::SMarketItemInfo"/>
+			<xs:enumeration value="BCType::vectorMarketItemInfo"/>
+			<xs:enumeration value="BCType::mapMarketItemInfo"/>
+			<xs:enumeration value="BCType::EMarketSortType"/>
+			<xs:enumeration value="BCType::EMarketState"/>
+			<xs:enumeration value="BCType::SMarketSearch"/>
+			<xs:enumeration value="BCType::SMapCDTimeInfo"/>
+			<xs:enumeration value="BCType::mapMapCDTimeInfo"/>
+			<xs:enumeration value="BCType::SLeaderboardInfo"/>
+			<xs:enumeration value="BCType::vectorLeaderboardInfos"/>
+			<xs:enumeration value="BCType::LeaderboardEnum"/>
+			<xs:enumeration value="BCType::SLeaderboardTable"/>
+			<xs:enumeration value="BCType::SPlayerDetailsInfo"/>
+			<xs:enumeration value="BCType::SPlayerHomeInfo"/>
+			<xs:enumeration value="BCType::SPlayerHomeEquipment"/>
+			<xs:enumeration value="BCType::SActivityRewardInfo"/>
+			<xs:enumeration value="BCType::SActivityInfo"/>
+			<xs:enumeration value="BCType::SActivityPlayerLeaderboardInfo"/>
+			<xs:enumeration value="BCType::mapActivityInfos"/>
+			<xs:enumeration value="BCType::vectorActivityPlayerLeaderboardInfos"/>
+			<xs:enumeration value="BCType::SItemShowInfo"/>
+			<xs:enumeration value="BCType::EMoneyType"/>
+			<xs:enumeration value="BCType::EUserType"/>
+			<xs:enumeration value="BCType::EClientType"/>
+			<xs:enumeration value="BCType::SMissionTrackInfo"/>
+			<xs:enumeration value="BCType::SDailyLoginRewardData"/>
+			<xs:enumeration value="BCType::vectorMissionTrackInfos"/>
+			<xs:enumeration value="BCType::SDayMissionDataGroup"/>
+			<xs:enumeration value="BCType::SDelCharProtectionInfo"/>
+			<xs:enumeration value="BCType::EMarketTime"/>
+			<xs:enumeration value="BCType::STournamentRewardInfo"/>
+			<xs:enumeration value="BCType::STournamentInfo"/>
+			<xs:enumeration value="BCType::STournamentPlayerLeaderboardInfo"/>
+			<xs:enumeration value="BCType::mapTournamentInfos"/>
+			<xs:enumeration value="BCType::vectorTournamentPlayerLeaderboardInfos"/>
+			<xs:enumeration value="BCType::ETournamentMode"/>
+			<xs:enumeration value="BCType::SGuildInfo"/>
+			<xs:enumeration value="BCType::vectorGuildInfos"/>
+			<xs:enumeration value="BCType::SGuildPlayerInfo"/>
+			<xs:enumeration value="BCType::SGuildDetailsInfo"/>
+			<xs:enumeration value="BCType::mapGuildPlayerInfos"/>
+			<xs:enumeration value="BCType::vectorGuildPlayerInfos"/>
+			<xs:enumeration value="BCType::GuildOfficialLevelEnum"/>
+			<xs:enumeration value="BCType::SGuildApplyPlayerInfo"/>
+			<xs:enumeration value="BCType::vectorGuildApplyPlayerInfos"/>
+			<xs:enumeration value="BCType::mapGuildApplyPlayerInfos"/>
+			<xs:enumeration value="BCType::vectorGuildLeaderboardInfos"/>
+			<xs:enumeration value="BCType::SGuildLeaderboardInfo"/>
+			<xs:enumeration value="BCType::SItemPos"/>
+			<xs:enumeration value="BCType::vectorItemPos"/>
+			<xs:enumeration value="BCType::SUniqueFinishMissionInfo"/>
+			<xs:enumeration value="BCType::mapTodayFinishMissionInfo"/>
+			<xs:enumeration value="BCType::STodayFinishMissionInfo"/>
+			<xs:enumeration value="BCType::SMarketMoneyInfo"/>
+			<xs:enumeration value="BCType::vectorMarketMoneyInfo"/>
+			<xs:enumeration value="BCType::mapMarketMoneyInfo"/>
+			<xs:enumeration value="BCType::SMarketMoneySearch"/>
+			<xs:enumeration value="BCType::SGuildUnlockItemInfo"/>
+			<xs:enumeration value="BCType::mapGuildUnlockItemInfos"/>
+			<xs:enumeration value="BCType::SGuildAbilityInfo"/>
+			<xs:enumeration value="BCType::mapGuildAbilityInfos"/>
+			<xs:enumeration value="BCType::SGuildPvEMapInfo"/>
+			<xs:enumeration value="BCType::mapGuildPvEMapInfos"/>
+			<xs:enumeration value="BCType::SGuildSpiritLimitInfo"/>
+			<xs:enumeration value="BCType::GuildUnlockTypeEnum"/>
+			<xs:enumeration value="BCType::SCharacterVIPData"/>
+			<xs:enumeration value="BCType::SAccountMailInfo"/>
+			<xs:enumeration value="BCType::mapAccountMailInfo"/>
+			<xs:enumeration value="BCType::CriteriaProgress"/>
+			<xs:enumeration value="BCType::mapCriteriaProgress"/>
+			<xs:enumeration value="BCType::mapCompletedAchievement"/>
+			<xs:enumeration value="BCType::SGuildShopRecordInfo"/>
+			<xs:enumeration value="BCType::vectorSGuildShopRecordInfos"/>
+			<xs:enumeration value="BCType::DBMissionTrackInfo_1"/>
+			<xs:enumeration value="BCType::vectorDBItemInfos_1"/>
+			<xs:enumeration value="	BCType::SMissionScenario"/>
+			<xs:enumeration value="	BCType::mapMissionScenario"/>
+			<xs:enumeration value="ProtocolGame::SRoomSettingInfo"/>
+			<xs:enumeration value="ProtocolGame::SPlayerCombatInfo"/>
+			<xs:enumeration value="ProtocolGame::vectorPlayerCombatResult"/>
+			<xs:enumeration value="ProtocolGame::SWeaponCombatInfo"/>
+			<xs:enumeration value="ProtocolGame::vectorWeaponCombatInfo"/>
+			<xs:enumeration value="ProtocolGame::SToyCombatInfo"/>
+			<xs:enumeration value="ProtocolGame::vectorToyCombatInfo"/>
+			<xs:enumeration value="ProtocolGame::ETradeEvent"/>
+			<xs:enumeration value="ProtocolGame::EGameResultType"/>
+			<xs:enumeration value="ProtocolGame::SCombatResult"/>
+			<xs:enumeration value="ProtocolGame::SRoomSearchCondition"/>
+			<xs:enumeration value="ProtocolGame::EGameType"/>
+			<xs:enumeration value="ProtocolGame::EGameMode"/>
+			<xs:enumeration value="ProtocolGame::SGameRules"/>
+			<xs:enumeration value="ProtocolGame::SBuyitemInfo"/>
+			<xs:enumeration value="ProtocolGame::vectorBuyitemInfos"/>
+			<xs:enumeration value="ProtocolGame::SDeathInfo"/>
+			<xs:enumeration value="ProtocolGame::SCraftingGeminfo"/>
+			<xs:enumeration value="ProtocolGame::vectorSCraftingGeminfo"/>
+			<xs:enumeration value="ProtocolGame::SRoomPlayerInfo"/>
+			<xs:enumeration value="ProtocolGame::vectorRoomPlayerInfo"/>
+			<xs:enumeration value="ProtocolGame::ERoomState"/>
+			<xs:enumeration value="ProtocolGame::SRoomChangeInfo"/>
+			<xs:enumeration value="ProtocolGame::vectorRoomChangeInfos"/>
+			<xs:enumeration value="ProtocolGame::SRoomNonChangeInfo"/>
+			<xs:enumeration value="ProtocolGame::SRoomInfo"/>
+			<xs:enumeration value="ProtocolGame::vectorRoomInfos"/>
+			<xs:enumeration value="ProtocolGame::EKickType"/>
+			<xs:enumeration value="ProtocolGame::EQuickType"/>
+			<xs:enumeration value="ProtocolGame::STeamChangeInfo"/>
+			<xs:enumeration value="ProtocolGame::ETournamentResultType"/>
+			<xs:enumeration value="ProtocolGame::vectorTeamChangeInfos"/>
+			<xs:enumeration value="ProtocolGame::STeamInfo"/>
+			<xs:enumeration value="ProtocolGame::vectorTeamInfos"/>
+			<xs:enumeration value="ProtocolGame::STeamSettingInfo"/>
+			<xs:enumeration value="ProtocolGlobalCenter::SCenterServerInfo"/>
+			<xs:enumeration value="ProtocolDBServer::SCharacterWingData"/>
+			<xs:enumeration value="ProtocolDBServer::vectorCharacterWingData"/>
+			<xs:enumeration value="BCType::SSystemMesseageInfo"/>
+			<xs:enumeration value="BCType::mapSystemMesseageInfos"/>
+			<xs:enumeration value="BCType::vectorSystemMesseageInfos"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="MemberType">
+		<xs:attribute name="Name" type="xs:string" use="required"/>
+		<xs:attribute name="Notes" type="xs:string" use="required"/>
+		<xs:attribute name="Type" type="TypeRange" use="required"/>
+		<xs:attribute name="Initial" type="xs:string" use="optional" default='""'/>
+	</xs:complexType>
+	<xs:element name="Dependences">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="File" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="Name" type="xs:string" use="required"/>
+						<xs:attribute name="Type" type="xs:string" use="required"/>
+						<xs:attribute name="Notes" type="xs:string" use="required"/>
+						<xs:attribute name="Language" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" use="required"/>
+			<xs:attribute name="Notes" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Enum">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Member" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="Name" type="xs:string" use="required"/>
+						<xs:attribute name="Notes" type="xs:string" use="required"/>
+						<xs:attribute name="Value" type="xs:string" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" use="required"/>
+			<xs:attribute name="StartValue" type="xs:string"/>
+			<xs:attribute name="Notes" type="xs:string" use="required"/>
+			<xs:attribute name="NeedString" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Struct">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Member" type="MemberType" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" use="required"/>
+			<xs:attribute name="Notes" type="xs:string" use="required"/>
+			<xs:attribute name="PartialUpdate" type="xs:boolean" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Vector">
+		<xs:complexType>
+			<xs:attribute name="Name" type="xs:string" use="required"/>
+			<xs:attribute name="Element" type="TypeRange" use="required"/>
+			<xs:attribute name="Notes" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Map">
+		<xs:complexType>
+			<xs:attribute name="Name" type="xs:string" use="required"/>
+			<xs:attribute name="Key" type="TypeRange" use="required"/>
+			<xs:attribute name="Value" type="xs:string" use="required"/>
+			<xs:attribute name="Notes" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ProtocolTypeDefine">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="Dependences"/>
+				<xs:element ref="Enum"/>
+				<xs:element ref="Struct"/>
+				<xs:element ref="Vector"/>
+				<xs:element ref="Map"/>
+			</xs:choice>
+			<xs:attribute name="NameSpace" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
