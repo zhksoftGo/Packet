@@ -8,9 +8,9 @@ package Cactus
 import "github.com/zhksoftGo/Packet"
 
 //整数数组
-type vectorInt []int32
+type VectorInt []int32
 
-func (v *vectorInt) Write(pak *Packet.Packet) {
+func (v *VectorInt) Write(pak *Packet.Packet) {
 	l := uint32(len(*v))
 	pak.WriteUint32(l)
 	for item := range *v {
@@ -18,7 +18,7 @@ func (v *vectorInt) Write(pak *Packet.Packet) {
 	}
 }
 
-func (v *vectorInt) Read(pak *Packet.Packet) {
+func (v *VectorInt) Read(pak *Packet.Packet) {
 	l := pak.ReadUint32()
 	var i uint32
 	for i = 0; i < l; i++ {
@@ -29,9 +29,9 @@ func (v *vectorInt) Read(pak *Packet.Packet) {
 }
 
 //Short数组
-type vectorShort []int16
+type VectorShort []int16
 
-func (v *vectorShort) Write(pak *Packet.Packet) {
+func (v *VectorShort) Write(pak *Packet.Packet) {
 	l := uint32(len(*v))
 	pak.WriteUint32(l)
 	for item := range *v {
@@ -39,7 +39,7 @@ func (v *vectorShort) Write(pak *Packet.Packet) {
 	}
 }
 
-func (v *vectorShort) Read(pak *Packet.Packet) {
+func (v *VectorShort) Read(pak *Packet.Packet) {
 	l := pak.ReadUint32()
 	var i uint32
 	for i = 0; i < l; i++ {
@@ -50,9 +50,9 @@ func (v *vectorShort) Read(pak *Packet.Packet) {
 }
 
 //int 64数组
-type vectorInt64 []int64
+type VectorInt64 []int64
 
-func (v *vectorInt64) Write(pak *Packet.Packet) {
+func (v *VectorInt64) Write(pak *Packet.Packet) {
 	l := uint32(len(*v))
 	pak.WriteUint32(l)
 	for item := range *v {
@@ -60,7 +60,7 @@ func (v *vectorInt64) Write(pak *Packet.Packet) {
 	}
 }
 
-func (v *vectorInt64) Read(pak *Packet.Packet) {
+func (v *VectorInt64) Read(pak *Packet.Packet) {
 	l := pak.ReadUint32()
 	var i uint32
 	for i = 0; i < l; i++ {
@@ -71,9 +71,9 @@ func (v *vectorInt64) Read(pak *Packet.Packet) {
 }
 
 //unsigned int 64数组
-type vectorUint64 []uint64
+type VectorUint64 []uint64
 
-func (v *vectorUint64) Write(pak *Packet.Packet) {
+func (v *VectorUint64) Write(pak *Packet.Packet) {
 	l := uint32(len(*v))
 	pak.WriteUint32(l)
 	for item := range *v {
@@ -81,7 +81,7 @@ func (v *vectorUint64) Write(pak *Packet.Packet) {
 	}
 }
 
-func (v *vectorUint64) Read(pak *Packet.Packet) {
+func (v *VectorUint64) Read(pak *Packet.Packet) {
 	l := pak.ReadUint32()
 	var i uint32
 	for i = 0; i < l; i++ {
@@ -92,9 +92,9 @@ func (v *vectorUint64) Read(pak *Packet.Packet) {
 }
 
 //Cactus::String数组
-type vectorString []string
+type VectorString []string
 
-func (v *vectorString) Write(pak *Packet.Packet) {
+func (v *VectorString) Write(pak *Packet.Packet) {
 	l := uint32(len(*v))
 	pak.WriteUint32(l)
 	for item := range *v {
@@ -102,7 +102,7 @@ func (v *vectorString) Write(pak *Packet.Packet) {
 	}
 }
 
-func (v *vectorString) Read(pak *Packet.Packet) {
+func (v *VectorString) Read(pak *Packet.Packet) {
 	l := pak.ReadUint32()
 	var i uint32
 	for i = 0; i < l; i++ {
@@ -113,9 +113,9 @@ func (v *vectorString) Read(pak *Packet.Packet) {
 }
 
 //浮点数组
-type vectorFloat []float32
+type VectorFloat []float32
 
-func (v *vectorFloat) Write(pak *Packet.Packet) {
+func (v *VectorFloat) Write(pak *Packet.Packet) {
 	l := uint32(len(*v))
 	pak.WriteUint32(l)
 	for item := range *v {
@@ -123,7 +123,7 @@ func (v *vectorFloat) Write(pak *Packet.Packet) {
 	}
 }
 
-func (v *vectorFloat) Read(pak *Packet.Packet) {
+func (v *VectorFloat) Read(pak *Packet.Packet) {
 	l := pak.ReadUint32()
 	var i uint32
 	for i = 0; i < l; i++ {
@@ -134,9 +134,9 @@ func (v *vectorFloat) Read(pak *Packet.Packet) {
 }
 
 //int-int map
-type mapIntInt map[int32]int32
+type MapIntInt map[int32]int32
 
-func (v *mapIntInt) Write(pak *Packet.Packet) {
+func (v *MapIntInt) Write(pak *Packet.Packet) {
 	l := uint32(len(*v))
 	pak.WriteUint32(l)
 	for key, item := range *v {
@@ -145,7 +145,7 @@ pak.WriteInt32(item)
 	}
 }
 
-func (v *mapIntInt) Read(pak *Packet.Packet) {
+func (v *MapIntInt) Read(pak *Packet.Packet) {
 	l := pak.ReadUint32()
 	var i uint32
 	for i = 0; i < l; i++ {
@@ -158,9 +158,9 @@ func (v *mapIntInt) Read(pak *Packet.Packet) {
 }
 
 //int-bool map
-type mapIntBool map[int32]bool
+type MapIntBool map[int32]bool
 
-func (v *mapIntBool) Write(pak *Packet.Packet) {
+func (v *MapIntBool) Write(pak *Packet.Packet) {
 	l := uint32(len(*v))
 	pak.WriteUint32(l)
 	for key, item := range *v {
@@ -169,7 +169,7 @@ pak.WriteBool(item)
 	}
 }
 
-func (v *mapIntBool) Read(pak *Packet.Packet) {
+func (v *MapIntBool) Read(pak *Packet.Packet) {
 	l := pak.ReadUint32()
 	var i uint32
 	for i = 0; i < l; i++ {
@@ -182,9 +182,9 @@ func (v *mapIntBool) Read(pak *Packet.Packet) {
 }
 
 //String-String map
-type mapStringString map[string]string
+type MapStringString map[string]string
 
-func (v *mapStringString) Write(pak *Packet.Packet) {
+func (v *MapStringString) Write(pak *Packet.Packet) {
 	l := uint32(len(*v))
 	pak.WriteUint32(l)
 	for key, item := range *v {
@@ -193,7 +193,7 @@ pak.WriteString(item)
 	}
 }
 
-func (v *mapStringString) Read(pak *Packet.Packet) {
+func (v *MapStringString) Read(pak *Packet.Packet) {
 	l := pak.ReadUint32()
 	var i uint32
 	for i = 0; i < l; i++ {
@@ -222,9 +222,9 @@ func (v *SMsgRecordItem) Read(pak *Packet.Packet) {
 }
 
 //消息记录数组
-type vectorMsgRecord []SMsgRecordItem
+type VectorMsgRecord []SMsgRecordItem
 
-func (v *vectorMsgRecord) Write(pak *Packet.Packet) {
+func (v *VectorMsgRecord) Write(pak *Packet.Packet) {
 	l := uint32(len(*v))
 	pak.WriteUint32(l)
 	for item := range *v {
@@ -232,7 +232,7 @@ func (v *vectorMsgRecord) Write(pak *Packet.Packet) {
 	}
 }
 
-func (v *vectorMsgRecord) Read(pak *Packet.Packet) {
+func (v *VectorMsgRecord) Read(pak *Packet.Packet) {
 	l := pak.ReadUint32()
 	var i uint32
 	for i = 0; i < l; i++ {

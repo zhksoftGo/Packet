@@ -15,18 +15,18 @@
 		<File Language="flash" Name="flash.utils.Endian" Type="single" Notes="字节序"/>
 		<File Language="go" Name="github.com/zhksoftGo/Packet" Type="System" Notes="打包解包类"/>
 	</Dependences>
-	<Vector Name="vectorInt" Element="int" Notes="整数数组"/>
-	<Vector Name="vectorShort" Element="int16" Notes="Short数组"/>
-	<Vector Name="vectorInt64" Element="int64" Notes="int 64数组"/>
-	<Vector Name="vectorUint64" Element="uint64" Notes="unsigned int 64数组"/>
-	<Vector Name="vectorString" Element="String" Notes="Cactus::String数组"/>
-	<Vector Name="vectorFloat" Element="float" Notes="浮点数组"/>
-	<Map Name="mapIntInt" Key="int" Value="int" Notes="int-int map"/>
-	<Map Name="mapIntBool" Key="int" Value="bool" Notes="int-bool map"/>
-	<Map Name="mapStringString" Key="String" Value="String" Notes="String-String map"/>
+	<Vector Name="VectorInt" Element="int" Notes="整数数组"/>
+	<Vector Name="VectorShort" Element="int16" Notes="Short数组"/>
+	<Vector Name="VectorInt64" Element="int64" Notes="int 64数组"/>
+	<Vector Name="VectorUint64" Element="uint64" Notes="unsigned int 64数组"/>
+	<Vector Name="VectorString" Element="String" Notes="Cactus::String数组"/>
+	<Vector Name="VectorFloat" Element="float" Notes="浮点数组"/>
+	<Map Name="MapIntInt" Key="int" Value="int" Notes="int-int map"/>
+	<Map Name="MapIntBool" Key="int" Value="bool" Notes="int-bool map"/>
+	<Map Name="MapStringString" Key="String" Value="String" Notes="String-String map"/>
 	<Struct Name="SMsgRecordItem" Notes="单条消息记录">
 		<Member Type="int64" Name="time" Notes="发生时间"/>
 		<Member Type="Packet" Name="msg" Notes="去掉消息头(长度+类型)的消息数据"/>
 	</Struct>
-	<Vector Name="vectorMsgRecord" Element="Cactus::SMsgRecordItem" Notes="消息记录数组"/>
+	<Vector Name="VectorMsgRecord" Element="Cactus::SMsgRecordItem" Notes="消息记录数组"/>
 </ProtocolTypeDefine>
