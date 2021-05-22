@@ -441,7 +441,7 @@ func (b *Packet) ReadPacket() Packet {
 
 func (b *Packet) FromBase64String(s string) {
 
-	buf, err := base64.RawStdEncoding.DecodeString(s)
+	buf, err := base64.StdEncoding.DecodeString(s)
 	if err != nil {
 		var pak Packet
 		pak.Write(buf)
