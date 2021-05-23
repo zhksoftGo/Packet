@@ -150,7 +150,7 @@ func (b *Packet) OffWritePos(offset int) {
 	b._write_pos += offset
 }
 func (b *Packet) SetWritePos(pos int) {
-	if pos >= b.Cap() {
+	if pos > b.Cap() {
 		panic(errors.New("Packet: exceed capacity"))
 	}
 
@@ -178,25 +178,26 @@ func (b *Packet) PatchInt32(v int32, pos int) {
 	b.SetWritePos(back_w_pos)
 }
 
-func (b *Packet) PeekOut(p []byte, pos int) {
-	l := len(p)
-	if pos+l > b._write_pos {
+func (b *Packet) PeekOut(pos int, len int) []byte {
+	if pos+len > b._write_pos {
 		panic(errors.New("Packet: exceed valid data range"))
 	}
 
-	tb := b._buf[pos:]
-	copy(p, tb)
+	tb := b._buf[pos : pos+len]
+	return tb
 }
 
-func (b *Packet) PeekInt32(v int32, pos int) {
+func (b *Packet) PeekInt32(pos int) int32 {
 	if pos < 0 || pos+4 > b._write_pos {
 		panic(errors.New("Packet: exceed valid data range"))
 	}
 
 	back_r_pos := b._read_pos
 	b._read_pos = pos
-	v = b.ReadInt32()
+	v := b.ReadInt32()
 	b.SetReadPos(back_r_pos)
+
+	return v
 }
 
 // For io.Writer
@@ -269,20 +270,15 @@ func (b *Packet) WriteFloat64(v float64) *Packet {
 }
 
 func (b *Packet) WriteString(v string) *Packet {
-	l := int32(len(v))
-	b.WriteInt32(l)
-
-	dest := b._buf[b._write_pos:]
-	copy(dest, v)
-
-	b._write_pos += int(l)
+	b.WriteInt32(int32(len(v)))
+	b.Write([]byte(v))
 
 	return b
 }
 
 func (b *Packet) WritePacket(v Packet) *Packet {
-	dataLen := int32(v._write_pos)
-	b.WriteInt32(dataLen)
+	dataLen := v._write_pos
+	b.WriteInt32(int32(dataLen))
 
 	if dataLen != 0 {
 		tb := v._buf[:v._write_pos]

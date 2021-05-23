@@ -14,23 +14,23 @@ func TestPacket(t *testing.T) {
 
 	var pak Packet
 	pak.WriteInt32(10000).WriteInt64(10101010).WriteString("This is a test.").WriteBool(true)
-	fmt.Println("pak:", pak)
+	fmt.Println("\npak:", pak)
 
 	val := pak.ReadInt32()
 	val2 := pak.ReadInt64()
 	vs := pak.ReadString()
 	vb := pak.ReadBool()
 	fmt.Println(val, val2, vs, vb)
-	fmt.Println("pak after read:", pak)
+	fmt.Println("\npak after read:", pak)
 
 	var pak2 Packet
 	pak.SetReadPos(0)
 	pak2.WriteInt32(123456).WritePacket(pak)
-	fmt.Println("pak2:", pak2)
+	fmt.Println("\npak2:", pak2)
 
 	pak2.ReadInt32()
 	pak2Out := pak2.ReadPacket()
-	fmt.Println("pak2Out:", pak2Out)
+	fmt.Println("\npak2Out:", pak2Out)
 
 	val = pak2Out.ReadInt32()
 	val2 = pak2Out.ReadInt64()
@@ -38,15 +38,25 @@ func TestPacket(t *testing.T) {
 	vb = pak2Out.ReadBool()
 	fmt.Println(val, val2, vs, vb)
 
+	// Patch
+	var pakSend Packet
+	pakSend.WriteUint32(0) // length
+	pakSend.WriteUint16(0) // type
+	pakSend.WriteUint32(0)
+	pakSend.WriteString("serverKey")
+	l := pakSend.GetWritePos() - 6
+	pakSend.PatchInt32(int32(l), 0)
+	fmt.Println("\nPatch:", pakSend.ReadUint32(), pakSend.ReadUint16(), pakSend.ReadUint32(), pakSend.ReadString())
+
 	// To base64 string
 	pak2Out.SetReadPos(0)
 	str = pak2Out.ToBase64String()
-	fmt.Println("ToBase64String:", pak2Out, str)
+	fmt.Println("\nToBase64String:", pak2Out, str)
 
 	// From base64 string
 	var pak2FromBase64String Packet
 	pak2FromBase64String.FromBase64String(str)
-	fmt.Println("FromBase64String:", pak2FromBase64String, str)
+	fmt.Println("\nFromBase64String:", pak2FromBase64String, str)
 	val = pak2FromBase64String.ReadInt32()
 	val2 = pak2FromBase64String.ReadInt64()
 	vs = pak2FromBase64String.ReadString()
