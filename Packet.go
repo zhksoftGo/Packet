@@ -422,7 +422,7 @@ func (b *Packet) ReadString() string {
 
 	b._read_pos += int(l)
 
-	return fmt.Sprintf("%q", tb)
+	return string(tb)
 }
 
 func (b *Packet) ReadPacket() Packet {
