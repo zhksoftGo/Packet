@@ -1,4 +1,4 @@
-package Packet
+﻿package Packet
 
 import (
 	"encoding/base64"
@@ -22,7 +22,7 @@ const M_Packet_Inc_Size = 256
 type Packet struct {
 	_buf []byte
 
-	/* 写指针的位置, 偏移量 */
+	/* 写指针的位置, 偏移量, valid data range */
 	_write_pos int
 
 	/* 读指针的位置, 偏移量 */
@@ -292,9 +292,7 @@ func (b *Packet) WritePacket(v Packet) *Packet {
 }
 
 func (b *Packet) ToBase64String() string {
-	var pak Packet
-	pak.WritePacket(*b)
-	return base64.StdEncoding.EncodeToString(b._buf)
+	return base64.StdEncoding.EncodeToString(b._buf[:b._write_pos])
 }
 
 // For io.Reader
@@ -443,8 +441,8 @@ func (b *Packet) FromBase64String(s string) {
 
 	buf, err := base64.StdEncoding.DecodeString(s)
 	if err != nil {
-		var pak Packet
-		pak.Write(buf)
-		*b = pak.ReadPacket()
+		panic(err)
+	} else {
+		b.Write(buf)
 	}
 }
