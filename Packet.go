@@ -281,18 +281,23 @@ func (b *Packet) WriteString(v string) *Packet {
 }
 
 func (b *Packet) WritePacket(v Packet) *Packet {
-	b.WriteInt32(int32(v._read_pos))
-	b.WriteInt32(int32(v._write_pos))
+	dataLen := int32(v._write_pos)
+	b.WriteInt32(dataLen)
 
-	tb := v._buf[:v._write_pos]
-	b.WriteInt32(int32(v._write_pos))
-	b.Write(tb)
+	if dataLen != 0 {
+		tb := v._buf[:v._write_pos]
+		b.Write(tb)
+
+		b.WriteInt32(int32(v._read_pos))
+	}
 
 	return b
 }
 
 func (b *Packet) ToBase64String() string {
-	return base64.StdEncoding.EncodeToString(b._buf[:b._write_pos])
+	var pak Packet
+	pak.WritePacket(*b)
+	return base64.StdEncoding.EncodeToString(pak._buf[:pak._write_pos])
 }
 
 // For io.Reader
@@ -304,6 +309,9 @@ func (b *Packet) ToBase64String() string {
 func (b *Packet) Read(p []byte) (n int, err error) {
 
 	l := len(p)
+	if l == 0 {
+		return 0, nil
+	}
 
 	r := b.Remaining()
 	if r < l {
@@ -426,13 +434,15 @@ func (b *Packet) ReadString() string {
 }
 
 func (b *Packet) ReadPacket() Packet {
-	var v Packet
-	v._read_pos = int(b.ReadInt32())
-	v._write_pos = int(b.ReadInt32())
 
-	l := b.ReadInt32()
-	v._buf = make([]byte, l)
-	b.Read(v._buf)
+	var v Packet
+	v._write_pos = int(b.ReadInt32())
+	v._buf = make([]byte, v._write_pos)
+
+	if v._write_pos != 0 {
+		b.Read(v._buf)
+		v._read_pos = int(b.ReadInt32())
+	}
 
 	return v
 }
@@ -443,6 +453,8 @@ func (b *Packet) FromBase64String(s string) {
 	if err != nil {
 		panic(err)
 	} else {
-		b.Write(buf)
+		var pak Packet
+		pak.Write(buf)
+		*b = pak.ReadPacket()
 	}
 }
