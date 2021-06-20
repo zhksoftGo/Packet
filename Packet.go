@@ -80,15 +80,15 @@ func (b Packet) ToHexViewString() string {
 	}
 
 	l := len(hex)
+	leftLineLen := 16*3 + 11 + 2
 	if l > 0 {
-		if l < 16*3+11 {
-			left := 16*3 + 11 - l%(16*3+11)
+		if l <= leftLineLen {
+			left := leftLineLen - l%(leftLineLen)
 			for t := 0; t < left; t++ {
 				hex += " "
 			}
 		}
-
-		out += hex + "  " + asc + "\n"
+		out += hex + asc + "\n"
 	}
 
 	return out
