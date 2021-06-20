@@ -8,13 +8,14 @@ import (
 func TestPacket(t *testing.T) {
 
 	str := "This is a test."
-	s := make([]byte, 20, 20)
+	s := make([]byte, 20)
 	copy(s, str)
 	fmt.Printf("%q %v % v\n", s, len(s), cap(s))
 
 	var pak Packet
 	pak.WriteInt32(10000).WriteInt64(10101010).WriteString("This is a test.").WriteBool(true)
 	fmt.Println("\npak:", pak)
+	fmt.Println("\n" + pak.ToHexViewString())
 
 	val := pak.ReadInt32()
 	val2 := pak.ReadInt64()
@@ -22,15 +23,18 @@ func TestPacket(t *testing.T) {
 	vb := pak.ReadBool()
 	fmt.Println(val, val2, vs, vb)
 	fmt.Println("\npak after read:", pak)
+	fmt.Println("\n" + pak.ToHexViewString())
 
 	var pak2 Packet
 	pak.SetReadPos(0)
 	pak2.WriteInt32(123456).WritePacket(pak)
 	fmt.Println("\npak2:", pak2)
+	fmt.Println("\n" + pak2.ToHexViewString())
 
 	pak2.ReadInt32()
 	pak2Out := pak2.ReadPacket()
 	fmt.Println("\npak2Out:", pak2Out)
+	fmt.Println("\n" + pak2Out.ToHexViewString())
 
 	val = pak2Out.ReadInt32()
 	val2 = pak2Out.ReadInt64()
@@ -76,5 +80,7 @@ func TestPacket(t *testing.T) {
 		var pak3 Packet
 		pak3.FromBase64String(strs[i])
 		fmt.Println(i, pak3.ToBase64String() == strs[i])
+
+		fmt.Println(i, "\n"+pak3.ToHexViewString())
 	}
 }

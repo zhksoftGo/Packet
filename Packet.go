@@ -37,6 +37,63 @@ func (b Packet) String() string {
 		b._buf)
 }
 
+func (b Packet) ToHexViewString() string {
+	var hex, asc, out string
+
+	for i := 0; i < len(b._buf); i++ {
+
+		// new line
+		if i%16 == 0 {
+			if i != 0 {
+				out += hex + "  " + asc + "\n"
+			}
+
+			hex = ""
+			asc = ""
+
+			hex += fmt.Sprintf("%08Xh: ", i/16)
+		}
+
+		var buf_format string
+		if i == b._read_pos && b._read_pos == b._write_pos {
+			buf_format = "=%02X"
+		} else if i == b._read_pos {
+			buf_format = ">%02X"
+		} else if i == b._write_pos {
+			buf_format = "<%02X"
+		} else {
+			buf_format = " %02X"
+		}
+
+		hex += fmt.Sprintf(buf_format, b._buf[i])
+
+		// 把wr_ptr打印出来
+		if i == b._write_pos-1 && len(b._buf) == b._write_pos {
+			hex += "<"
+		}
+
+		if b._buf[i] >= 32 && b._buf[i] < 127 {
+			asc += string(b._buf[i])
+		} else {
+			asc += "."
+		}
+	}
+
+	l := len(hex)
+	if l > 0 {
+		if l < 16*3+11 {
+			left := 16*3 + 11 - l%(16*3+11)
+			for t := 0; t < left; t++ {
+				hex += " "
+			}
+		}
+
+		out += hex + "  " + asc + "\n"
+	}
+
+	return out
+}
+
 // 从Buffer构建
 func (b *Packet) FromBuff(buf []byte) {
 	if b._buf != nil {
